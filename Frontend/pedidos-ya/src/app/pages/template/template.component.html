@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">Menú Principal</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Mi cuenta
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" (click)="verPerfil()">Ver perfil</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item text-danger" (click)="cerrarSesion()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+@if(isLoading()){
+<!-- Modal de carga -->
+<div class="modal fade show d-block" tabindex="-1" role="dialog"
+  style="background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center p-4 border-0 shadow-lg" style="border-radius: 1rem;">
+      <div class="d-flex flex-column align-items-center">
+        <!-- Spinner mejorado -->
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 4rem; height: 4rem;">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+        <!-- Texto -->
+        <h5 class="modal-title mb-0">Cargando la página...</h5>
+        <small class="text-muted mt-2">Por favor, espere un momento</small>
+      </div>
+    </div>
+  </div>
+</div>
+}
+<router-outlet />

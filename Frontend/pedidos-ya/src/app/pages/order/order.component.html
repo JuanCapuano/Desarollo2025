@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Nuevo Pedido</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviarOrden()">
+
+    <div class="mb-3">
+      <label for="restaurantId">Restaurante</label>
+      <select class="form-control" id="restaurantId" formControlName="restaurantId">
+       <option *ngFor="let r of restaurantes" [value]="r.id">
+        {{ r.nombre }}
+       </option>
+      </select>  
+    </div>
+
+    <div class="mb-3">
+        <label for="products">Productos</label>
+        <select class="form-control" id="products" formControlName="products" multiple>
+        <option *ngFor="let p of productos" [value]="p.id">
+          {{ p.nombre }}
+        </option>
+      </select>     
+    </div>
+
+    <div formGroupName="location" class="mb-3">
+        <h4>Ubicación</h4>
+        <label for = "street">Calle</label>
+        <input type="text" class="form-control" id="street" formControlName="street" />
+        <label for = "number">Número</label>
+        <input type="number" class="form-control" id="number" formControlName="number" min="1" />
+        <label for = "city">Ciudad</label>
+        <select class="form-control" id="cityId" formControlName="cityId">
+          <option *ngFor="let c of cuidades" [value]="c.id">
+           {{ c.nombre }}
+          </option>  
+        </select>
+        <div formGroupName="location" class="mb-3">
+            <h4>Coordenadas</h4>
+            <label for="latitude">Latitud</label>
+            <input type="number" class="form-control" id="latitude" formControlName="lat" />
+            <label for="longitude">Longitud</label>
+            <input type="number" class="form-control" id="longitude" formControlName="lng" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Enviar Orden</button>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
+    <p *ngIf="formulario.invalid" class="text-danger mt-2">Formulario inválido</p>
+    <p *ngIf="formulario.valid" class="text-success mt-2">Formulario válido</p>
+    
+
+  </form>  
+
+</div> 

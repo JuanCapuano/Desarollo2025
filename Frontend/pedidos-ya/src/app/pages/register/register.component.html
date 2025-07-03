@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4 w-100" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Registrarse</h2>
+
+    <!-- Mensajes -->
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
+    <!-- Formulario -->
+    <form [formGroup]="formulario" (ngSubmit)="register()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="usuario@ejemplo.com" />
+        <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched" class="text-danger">
+          Ingresá un correo válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="••••••••" />
+        <div *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched" class="text-danger">
+          La contraseña debe tener al menos 6 caracteres.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+
+    </form>
+
+
+    <div class="text-center mt-3">
+      <p>¿Ya tenés cuenta? 
+        <a [routerLink]="['/login']" class="text-decoration-none">Iniciar sesión</a>
+      </p>
+    </div>
+
+
+  </div>
+</div>
+

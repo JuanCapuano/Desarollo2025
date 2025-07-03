@@ -1,0 +1,47 @@
+/* Título */
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #dc3545;
+  margin-bottom: 20px;
+
+}
+
+/* Formulario */
+form {
+  max-width: 500px;
+  margin: 0 auto; 
+  margin-bottom: 4rem;
+  background-color: #eaebec;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Inputs */
+input.form-control {
+  margin-bottom: 10px;
+}
+
+input.form-control:focus {
+  border-color: #007bff;
+}
+
+/* Botón */
+button {
+  margin-top: px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+  margin-top: 0.75rem;
+}
+
+.alert-success {
+  margin-top: 0.75rem;
+}
+
+
+
+
+
