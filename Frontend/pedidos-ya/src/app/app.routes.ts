@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { OrderComponent } from './pages/order/order.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
       {
         path:'perfil',
          component:PerfilComponent
+      },
+      {
+        path:'listOrders',
+        component:ListOrdersComponent
       }
     ],
   },
