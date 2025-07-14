@@ -1,3 +1,4 @@
+import id from '@angular/common/locales/id';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
@@ -45,6 +46,20 @@ async updateOrder(id: number, data: any) {
   });
 
   return response.data;
+}
+
+async deleteOrder(id: number){
+  const token = localStorage.getItem('access_token');
+  if (!token) throw new Error('No hay token, logueate primero');
+  const response = await axios.delete( `http://localhost:3000/order/${id}`,  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+
+
 }
 
 }

@@ -25,6 +25,7 @@
         <td>{{ orden.location?.location?.lng }}</td>
         <td>
           <button class="modificar" (click)="editarOrden(orden)">Modificar</button>
+          <button class="eliminar" (click)="abrirModalEliminar(orden.id)">Eliminar</button>
         </td>
       </tr>
     }
@@ -75,3 +76,19 @@
     <button class="cancelar" (click)="cancelarEdicion()">Cancelar</button>
   </div>
 </div>
+
+<!-- Modal de confirmación para eliminar (FUERA del edit-form) -->
+<!-- Modal de Confirmación para Eliminar Orden -->
+<div class="modal-backdrop" *ngIf="mostrarModalEliminarOrden">
+  <div class="modal-content">
+    <p>¿Estás seguro de que querés eliminar la orden con ID {{ ordenIdAEliminar }}?</p>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="btn btn-danger me-2" (click)="confirmarEliminarOrden()">Sí, eliminar</button>
+      <button class="btn btn-secondary" (click)="cancelarEliminarOrden()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div>
+
+

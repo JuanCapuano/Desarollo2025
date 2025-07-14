@@ -58,3 +58,15 @@
 </div>
 }
 <router-outlet />
+
+<!-- Modal de Confirmación para Cerrar Sesión -->
+<div class="modal-backdrop" *ngIf="mostrarModalCerrarSesion">
+  <div class="modal-content">
+    <p>¿Estás seguro de que querés cerrar sesión?</p>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="btn btn-danger me-2" (click)="confirmarCerrarSesion()">Sí, cerrar</button>
+      <button class="btn btn-secondary" (click)="cancelarCerrarSesion()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
