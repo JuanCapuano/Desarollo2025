@@ -6,6 +6,7 @@ import { OrderComponent } from './pages/order/order.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
+import { PaymentComponent } from './payment/payment.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,9 @@ export const routes: Routes = [
       {
         path:'listOrders',
         component:ListOrdersComponent
+      },
+      { path: 'payment/:orderId',
+        component:PaymentComponent
       }
     ],
   },

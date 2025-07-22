@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Realizar Pago</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviarPago()">
+    
+    <div class="mb-3">
+      <label for="amount">Monto</label>
+      <input
+        type="number"
+        class="form-control"
+        id="amount"
+        formControlName="amount"
+        min="1"
+        placeholder="Ej: 300"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="method">Método de Pago</label>
+      <select class="form-control" id="method" formControlName="method">
+        <option value="MP">Mercado Pago</option>
+        <option value="EFECTIVO">Efectivo</option>
+        <option value="TARJETA">Tarjeta</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="transactionId">ID de Transacción</label>
+      <input
+        type="text"
+        class="form-control"
+        id="transactionId"
+        formControlName="transactionId"
+        placeholder="Ej: txn_12345"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="paymentStatus">Estado del Pago</label>
+      <select class="form-control" id="paymentStatus" formControlName="paymentStatus">
+        <option value="completed">Completado</option>
+        <option value="pending">Pendiente</option>
+        <option value="failed">Fallido</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar Pago</button>
+
+    <!-- Mensajes de estado -->
+    <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success mt-3">{{ success }}</div>
+
+    <p *ngIf="formulario.invalid" class="text-danger mt-2">Formulario inválido</p>
+    <p *ngIf="formulario.valid" class="text-success mt-2">Formulario válido</p>
+  </form>
+</div>
+

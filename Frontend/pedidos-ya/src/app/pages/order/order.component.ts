@@ -59,9 +59,10 @@ export class OrderComponent {
       this.error = '';
       const raw = this.formulario.value;
       raw.products = raw.products.map((id: any) => Number(id));
-      await this.orderService.crearOrden(raw);
+      const nuevaOrden = await this.orderService.crearOrden(raw);
       this.formulario.reset();
       this.success = 'Orden registrada exitosamente.';
+      setTimeout(() => this.router.navigate(['/payment', nuevaOrden.id]), 2000);
     } catch (error: any) {
       console.error('Error capturado:', error);
       this.error = 'Error al registrar la orden';
