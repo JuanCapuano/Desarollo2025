@@ -1,66 +1,33 @@
-import id from '@angular/common/locales/id';
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  constructor() {}
+  private apiUrl = 'http://localhost:3000/order';
+  constructor(private http: HttpClient) {}
 
   async crearOrden(orderData: any) {
-    const token = localStorage.getItem('access_token');
-    if (!token) throw new Error('No hay token, logueate primero');
-
-    const response = await axios.post('http://localhost:3000/order', orderData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    console.log('Respuesta del backend:', response.data);
-    return response.data;
+    const response = await firstValueFrom(this.http.post<any>(this.apiUrl, orderData));
+    return response;
   }
 
   async getOrders() {
-  const token = localStorage.getItem('access_token');
-  if (!token) throw new Error('No hay token, logueate primero');
+    const response = await firstValueFrom(this.http.get<any>(this.apiUrl));
+    return response.items;
+  }
 
-  const response = await axios.get('http://localhost:3000/order', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  async updateOrder(id: number, data: any) {
+    const response = await firstValueFrom(this.http.patch<any>(`${this.apiUrl}/${id}`, data));
+    return response;
+  }
 
-  return response.data.items;
-}
-
-async updateOrder(id: number, data: any) {
-  const token = localStorage.getItem('access_token');
-  if (!token) throw new Error('No hay token, logueate primero');
-
-  const response = await axios.patch(`http://localhost:3000/order/${id}`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return response.data;
-}
-
-async deleteOrder(id: number){
-  const token = localStorage.getItem('access_token');
-  if (!token) throw new Error('No hay token, logueate primero');
-  const response = await axios.delete( `http://localhost:3000/order/${id}`,  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return response.data;
-
-
-}
+  async deleteOrder(id: number) {
+    const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}/${id}`));
+    return response;
+  }
 
 }
 

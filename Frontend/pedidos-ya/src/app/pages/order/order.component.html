@@ -13,12 +13,15 @@
     </div>
 
     <div class="mb-3">
-        <label for="products">Productos</label>
-        <select class="form-control" id="products" formControlName="products" multiple>
-        <option *ngFor="let p of productos" [value]="p.id">
-          {{ p.nombre }}
-        </option>
-      </select>     
+      <label for="products">Productos</label>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Selecciona productos</mat-label>
+        <mat-select id="products" formControlName="products" multiple>
+          <mat-option *ngFor="let p of productos" [value]="p.id">
+            {{ p.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div formGroupName="location" class="mb-3">
