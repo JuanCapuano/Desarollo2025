@@ -15,6 +15,21 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order">Nuevo Pedido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listOrders">Ver Órdenes</a>
+        </li>
+      </ul>
+
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
           <a
@@ -36,6 +51,7 @@
     </div>
   </div>
 </nav>
+
 
 
 @if(isLoading()){

@@ -37,4 +37,5 @@ cancelarCerrarSesion() {
   verPerfil() {
    this.router.navigate(['/perfil']);
 }
+
 }

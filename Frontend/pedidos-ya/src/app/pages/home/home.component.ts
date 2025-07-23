@@ -44,23 +44,5 @@ export class HomeComponent implements OnInit {
   // Función placeholder para inicializaciones futuras
   async initialization(): Promise<void> {}
 
-  // Redirige a la pantalla de login
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  // Redirige a la pantalla de registro
-  goToRegister() {
-    this.router.navigate(['/register']);
-  }
-
-  // Redirige a la pantalla para realizar un nuevo pedido
-  goToOrder(){
-    this.router.navigate(['/order']);
-  }
-
-  // Redirige a la vista que lista todas las órdenes
-  cargarOrdenes(){
-    this.router.navigate(['/listOrders']);
-  }
+  
 }
