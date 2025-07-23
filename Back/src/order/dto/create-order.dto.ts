@@ -1,5 +1,5 @@
 
-
+//Dto para crear una orden, el dto debe coincidir con la estructura de la entidad Order
 export class CreateOrderDto {
   userId?: number;
   restaurantId: number;

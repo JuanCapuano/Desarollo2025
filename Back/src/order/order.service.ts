@@ -16,24 +16,27 @@ export class OrderService {
 
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
   const order = this.orderRepository.create({
-    userId : createOrderDto.userId, // Assuming userId is passed in the DTO
+    userId : createOrderDto.userId, // ID del usuario que crea la orden, lo obtenemos del token JWT
     restaurantId: createOrderDto.restaurantId,
     products: createOrderDto.products,
     location: createOrderDto.location,
-    status: OrderStatus.PENDING,
+    status: OrderStatus.PENDING, //estado inicial de la orden
     delivery: null,
   });
   return await this.orderRepository.save(order);
 }
 
+//findAll para todas las ordenes con paginación
   async findAll(options: IPaginationOptions): Promise<Pagination<Order>> {
   return paginate<Order>(this.orderRepository, options);
 }
 
+//findOne para obtener una orden específica por su ID
+
   async findOne(id: number): Promise<Order | null> {
     return await this.orderRepository.findOne({ where: { id } });
   }
-
+//update para actualizar una orden específica por su ID
   async update(
     id: number,
     updateOrderDto: UpdateOrderDto,
@@ -41,11 +44,11 @@ export class OrderService {
     await this.orderRepository.update(id, updateOrderDto);
     return this.findOne(id);
   }
-
+//remove para eliminar una orden específica por su ID
   async remove(id: number): Promise<void> {
     await this.orderRepository.delete(id);
   }
-
+//updateFull para actualizar completamente una orden específica por su ID
  async updateFull(id: number, updateOrderDto: CreateOrderDto) {
   await this.orderRepository.update(id, updateOrderDto);
   return this.orderRepository.findOne({ where: { id } });

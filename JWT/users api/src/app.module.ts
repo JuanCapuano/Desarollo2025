@@ -13,7 +13,7 @@ import { RolesService } from './roles/roles.service';
 import { PermissionsService } from './permissions/permissions.service';
 import { RolesController } from './roles/roles.controller';
 import { PermissionsController } from './permissions/permissions.controller';
-
+//módulo principal de la aplicación
 @Module({
   imports: [
     TypeOrmModule.forRoot({

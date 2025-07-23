@@ -6,6 +6,9 @@ import { RolesController } from './roles.controller';
 import { UsersModule } from 'src/users/users.module';
 import { JwtService } from 'src/jwt/jwt.service';
 
+//el módulo es responsable de la configuración del módulo de roles
+// importa el servicio de roles y el controlador de roles
+
 @Module({
   imports: [
     TypeOrmModule.forFeature([Role]),

@@ -6,13 +6,13 @@ async function bootstrap() {
 
 
   app.enableCors({
-    origin: 'http://localhost:4200',
+    origin: 'http://localhost:4200', // Permitir solicitudes desde el frontend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
   });
 
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3000); 
 }
 bootstrap();
 

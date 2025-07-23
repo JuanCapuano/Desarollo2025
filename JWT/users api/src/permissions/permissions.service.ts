@@ -5,7 +5,10 @@ import { Permission } from '../entities/permission.entity';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 
-@Injectable()
+
+//el servico se encarga de la logica de negocio relacionada a los permisos
+// contiene los metodos para crear, obtener, actualizar y eliminar permisos
+
 export class PermissionsService {
   constructor(
     @InjectRepository(Permission)

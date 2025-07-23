@@ -10,7 +10,8 @@ import { PaymentModule } from './payment/payment.module';
 import { PaymentController } from './payment/payment.controller';
 import { PaymentService } from './payment/payment.service';
 
-
+//Module principal de la aplicación
+//Importa los módulos necesarios y configura la conexión a la base de datos
 @Module({
   imports: [
     TypeOrmModule.forRoot({
