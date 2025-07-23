@@ -51,7 +51,7 @@ export class UsersController {
     @Req() request: RequestWithUser,
     @Param('permission') permission: string,
   ) {
-    const allowed = this.service.canDo(request.user, permission);
+    const allowed = this.service.canDo(request.user, permission); //requets.user es el usuario autenticado y permission es el permiso que se le pasa al método canDo
 
 
     return {

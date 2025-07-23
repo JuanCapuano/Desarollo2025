@@ -43,10 +43,10 @@ export class AuthGuard implements CanActivate {
 
       //usamos axios para hacer una petición al microservicio de autenticación, verificamos el token y los permisos 
       const response = await axios.get(
-        `http://localhost:3001/can-do/${permission}`,
+        `http://localhost:3001/can-do/${permission}`, //el cando-do es un endpoint que verifica si el usuario tiene el permiso solicitado, es del microservicio de autenticación
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, // pasamos el token en el header de autorización
             'Content-Type': 'application/json',
           },
         }
