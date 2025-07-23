@@ -1,41 +1,59 @@
+<!-- Contenedor centrado vertical y horizontalmente, ocupa toda la altura de la ventana -->
 <div class="container d-flex justify-content-center align-items-center vh-100">
+  <!-- Tarjeta con sombra y padding, ancho máximo 500px -->
   <div class="card shadow p-4 w-100" style="max-width: 500px;">
     <h2 class="text-center mb-4">Registrarse</h2>
 
-    <!-- Mensajes -->
+    <!-- Mostrar mensaje de error -->
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <!-- Mostrar mensaje de éxito -->
     <div *ngIf="success" class="alert alert-success">{{ success }}</div>
 
-    <!-- Formulario -->
+    <!-- Formulario reactivo -->
     <form [formGroup]="formulario" (ngSubmit)="register()">
+      
+      <!-- Campo email -->
       <div class="mb-3">
         <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" formControlName="email" placeholder="usuario@ejemplo.com" />
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="usuario@ejemplo.com"
+        />
+        <!-- Validación: mostrar error si email inválido y tocado -->
         <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched" class="text-danger">
           Ingresá un correo válido.
         </div>
       </div>
 
+      <!-- Campo contraseña -->
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" formControlName="password" placeholder="••••••••" />
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+        />
+        <!-- Validación: mostrar error si contraseña inválida y tocada -->
         <div *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched" class="text-danger">
           La contraseña debe tener al menos 6 caracteres.
         </div>
       </div>
 
+      <!-- Botón de enviar -->
       <button type="submit" class="btn btn-primary w-100">Registrarse</button>
-
     </form>
 
-
+    <!-- Link para ir al login -->
     <div class="text-center mt-3">
       <p>¿Ya tenés cuenta? 
         <a [routerLink]="['/login']" class="text-decoration-none">Iniciar sesión</a>
       </p>
     </div>
-
-
   </div>
 </div>
-

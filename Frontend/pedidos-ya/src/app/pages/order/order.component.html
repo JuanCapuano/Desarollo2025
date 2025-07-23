@@ -1,22 +1,28 @@
+<!-- Contenedor principal con margen superior -->
 <div class="container mt-4">
+  <!-- Título centrado y con margen abajo -->
   <h2 class="text-center mb-4">Nuevo Pedido</h2>
 
+  <!-- Formulario reactivo Angular para crear una orden -->
   <form [formGroup]="formulario" (ngSubmit)="enviarOrden()">
+
 
     <div class="mb-3">
       <label for="restaurantId">Restaurante</label>
       <select class="form-control" id="restaurantId" formControlName="restaurantId">
-       <option *ngFor="let r of restaurantes" [value]="r.id">
-        {{ r.nombre }}
-       </option>
+        <option *ngFor="let r of restaurantes" [value]="r.id">
+          {{ r.nombre }}
+        </option>
       </select>  
     </div>
 
+    <!-- Selector múltiple de productos usando Angular Material -->
     <div class="mb-3">
       <label for="products">Productos</label>
       <mat-form-field appearance="fill" class="w-100">
         <mat-label>Selecciona productos</mat-label>
         <mat-select id="products" formControlName="products" multiple>
+          <!-- Itera productos para mostrar opciones -->
           <mat-option *ngFor="let p of productos" [value]="p.id">
             {{ p.nombre }}
           </mat-option>
@@ -24,36 +30,51 @@
       </mat-form-field>
     </div>
 
+    <!-- Grupo de controles para la ubicación -->
     <div formGroupName="location" class="mb-3">
-        <h4>Ubicación</h4>
-        <label for = "street">Calle</label>
-        <input type="text" class="form-control" id="street" formControlName="street" />
-        <label for = "number">Número</label>
-        <input type="number" class="form-control" id="number" formControlName="number" min="1" />
-        <label for = "city">Ciudad</label>
-        <select class="form-control" id="cityId" formControlName="cityId">
-          <option *ngFor="let c of cuidades" [value]="c.id">
-           {{ c.nombre }}
-          </option>  
-        </select>
-        <div formGroupName="location" class="mb-3">
-            <h4>Coordenadas</h4>
-            <label for="latitude">Latitud</label>
-            <input type="number" class="form-control" id="latitude" formControlName="lat" />
-            <label for="longitude">Longitud</label>
-            <input type="number" class="form-control" id="longitude" formControlName="lng" />
-        </div>
+      <h4>Ubicación</h4>
+
+      <!-- Input para la calle -->
+      <label for="street">Calle</label>
+      <input type="text" class="form-control" id="street" formControlName="street" />
+
+      <!-- Input para el número -->
+      <label for="number">Número</label>
+      <input type="number" class="form-control" id="number" formControlName="number" min="1" />
+
+      <!-- Selector de ciudad -->
+      <label for="cityId">Ciudad</label>
+      <select class="form-control" id="cityId" formControlName="cityId">
+        <!-- Itera ciudades para mostrar opciones -->
+        <option *ngFor="let c of cuidades" [value]="c.id">
+          {{ c.nombre }}
+        </option>  
+      </select>
+
+      <!-- Grupo anidado para coordenadas dentro de ubicación -->
+      <div formGroupName="location" class="mb-3">
+        <h4>Coordenadas</h4>
+
+        <!-- Input para latitud -->
+        <label for="latitude">Latitud</label>
+        <input type="number" class="form-control" id="latitude" formControlName="lat" />
+
+        <!-- Input para longitud -->
+        <label for="longitude">Longitud</label>
+        <input type="number" class="form-control" id="longitude" formControlName="lng" />
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" >Enviar Orden</button>
+    <!-- Botón para enviar la orden -->
+    <button type="submit" class="btn btn-primary">Enviar Orden</button>
 
+    <!-- Mensajes de error y éxito -->
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
     <div *ngIf="success" class="alert alert-success">{{ success }}</div>
 
+    <!-- Mensajes de validación del formulario -->
     <p *ngIf="formulario.invalid" class="text-danger mt-2">Formulario inválido</p>
     <p *ngIf="formulario.valid" class="text-success mt-2">Formulario válido</p>
-    
 
   </form>  
-
 </div> 

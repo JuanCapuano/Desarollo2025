@@ -1,5 +1,6 @@
+/* Establece una altura máxima para las imágenes dentro de las tarjetas
+   y asegura que mantengan una proporción adecuada sin deformarse */
 .card-img-top {
   max-height: 10em;
   object-fit: cover;
 }
-

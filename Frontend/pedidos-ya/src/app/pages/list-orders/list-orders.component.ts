@@ -7,15 +7,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-orders.component',
-  imports: [CommonModule,RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.css'
 })
-
-export class ListOrdersComponent{
-  ordenes: any[] = [];
-  error = '';
-  ordenEditando: any = null;
+export class ListOrdersComponent {
+  ordenes: any[] = []; // Lista de pedidos obtenidos
+  error = ''; // Mensaje de error para mostrar en pantalla
+  ordenEditando: any = null; // Pedido que se está editando actualmente
 
   constructor(private orderService: OrderService, private router: Router) {}
 
@@ -24,35 +23,35 @@ export class ListOrdersComponent{
   }
 
   async cargarOrdenes() {
-    //Validamos que tenga token antes de hacer la petición
-  const token = localStorage.getItem('access_token');
-  if (!token) {
-    this.error = 'Tenés que iniciar sesión para ver las órdenes.';
-    setTimeout(() => this.router.navigate(['/login']), 2000);
-    return;
+    // Verifica si el usuario tiene token, si no lo redirige al login
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      this.error = 'Tenés que iniciar sesión para ver las órdenes.';
+      setTimeout(() => this.router.navigate(['/login']), 2000);
+      return;
+    }
+
+    try {
+      this.ordenes = await this.orderService.getOrders();
+      this.error = '';
+    } catch (err) {
+      console.error(err);
+      this.error = 'No se pudieron cargar las órdenes.';
+    }
   }
 
-  try {
-    this.ordenes = await this.orderService.getOrders();
-    this.error = '';
-  } catch (err) {
-    console.error(err);
-    this.error = 'No se pudieron cargar las órdenes.';
-  }
-}
-
-
+  // Al hacer clic en "Modificar", se clona la orden para editarla sin modificar la original
   editarOrden(orden: any) {
-    this.ordenEditando = JSON.parse(JSON.stringify(orden)); // Clonamos para evitar referencias directas
+    this.ordenEditando = JSON.parse(JSON.stringify(orden));
   }
 
   cancelarEdicion() {
     this.ordenEditando = null;
   }
 
+  // Guarda los cambios de la orden editada
   async guardarCambios() {
     try {
-      // Preparar solo los campos que vas a modificar para el patch
       const dataToUpdate = {
         status: this.ordenEditando.status,
         location: {
@@ -68,7 +67,7 @@ export class ListOrdersComponent{
 
       const updatedOrder = await this.orderService.updateOrder(this.ordenEditando.id, dataToUpdate);
 
-      // Actualizar la lista local con los datos nuevos
+      // Reemplaza la orden antigua por la actualizada
       const index = this.ordenes.findIndex(o => o.id === updatedOrder.id);
       if (index !== -1) {
         this.ordenes[index] = updatedOrder;
@@ -83,47 +82,44 @@ export class ListOrdersComponent{
   }
 
   mostrarModalEliminarOrden = false;
-ordenIdAEliminar: number | null = null;
+  ordenIdAEliminar: number | null = null;
 
-// Cuando clickeás el botón eliminar: solo abrimos modal y guardamos id
-abrirModalEliminar(id: number) {
-  this.ordenIdAEliminar = id;
-  this.mostrarModalEliminarOrden = true;
-}
-
-// Cuando confirmás, llamás al método real que ya tenés, pasando el id guardado
-async confirmarEliminarOrden() {
-  if (this.ordenIdAEliminar === null) return;
-
-  try {
-    await this.eliminarOrden(this.ordenIdAEliminar);
-    this.error = '';
-  } catch (err) {
-    console.error(err);
-    this.error = 'Error al eliminar la orden';
-  } finally {
-    this.mostrarModalEliminarOrden = false;
-    this.ordenIdAEliminar = null;
+  // Abre el modal y guarda el ID de la orden a eliminar
+  abrirModalEliminar(id: number) {
+    this.ordenIdAEliminar = id;
+    this.mostrarModalEliminarOrden = true;
   }
-}
 
+  // Confirma la eliminación de la orden
+  async confirmarEliminarOrden() {
+    if (this.ordenIdAEliminar === null) return;
+
+    try {
+      await this.eliminarOrden(this.ordenIdAEliminar);
+      this.error = '';
+    } catch (err) {
+      console.error(err);
+      this.error = 'Error al eliminar la orden';
+    } finally {
+      this.mostrarModalEliminarOrden = false;
+      this.ordenIdAEliminar = null;
+    }
+  }
+
+  // Lógica real para eliminar la orden
   async eliminarOrden(id: number) {
     try {
       await this.orderService.deleteOrder(id);
-
-     // Eliminamos la orden del array local para actualizar la vista
       this.ordenes = this.ordenes.filter(o => o.id !== id);
-
       this.error = '';
-  }   catch (err) {
+    } catch (err) {
       console.error(err);
       this.error = 'Error al eliminar la orden';
+    }
   }
-}
 
-cancelarEliminarOrden() {
-  this.mostrarModalEliminarOrden = false;
-  this.ordenIdAEliminar = null;
-}
-
+  cancelarEliminarOrden() {
+    this.mostrarModalEliminarOrden = false;
+    this.ordenIdAEliminar = null;
+  }
 }

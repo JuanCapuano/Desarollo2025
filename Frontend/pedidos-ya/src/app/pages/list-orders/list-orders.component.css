@@ -1,9 +1,11 @@
+/* Estilo del título principal */
 h2 {
   margin-bottom: 1rem;
   font-size: 1.8rem;
   color: #333;
 }
 
+/* Estilos generales para la tabla de órdenes */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -13,28 +15,32 @@ table {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Encabezado de la tabla con fondo azul y letras blancas */
 thead {
   background-color: #007bff;
   color: white;
 }
 
+/* Espaciado y bordeado de celdas */
 th, td {
   padding: 0.75rem;
   text-align: left;
   border: 1px solid #ddd;
 }
 
+/* Efecto hover para las filas del cuerpo de la tabla */
 tbody tr:hover {
   background-color: #f1f1f1;
 }
 
+/* Estilo para mensajes de error */
 .error {
   color: red;
   font-weight: bold;
   margin-top: 1rem;
 }
 
-/* 🔧 Estilo para el formulario de edición */
+/* 🛠️ Estilo del formulario de edición de orden */
 .edit-form {
   padding: 1.5rem;
   border: 1px solid #ccc;
@@ -43,12 +49,14 @@ tbody tr:hover {
   margin-bottom: 2rem;
 }
 
+/* Etiquetas del formulario */
 .edit-form label {
   display: block;
   margin-top: 1rem;
   font-weight: bold;
 }
 
+/* Campos del formulario */
 .edit-form input,
 .edit-form select {
   width: 100%;
@@ -58,7 +66,7 @@ tbody tr:hover {
   border-radius: 4px;
 }
 
-/* Estilo base común para todos los botones */
+/* Botones comunes: modificar, guardar, cancelar */
 .modificar,
 .guardar,
 .cancelar {
@@ -74,7 +82,7 @@ tbody tr:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Botón Modificar (azul) */
+/* Botón de modificar: azul */
 .modificar {
   background-color: #007bff;
 }
@@ -82,7 +90,7 @@ tbody tr:hover {
   background-color: #0056b3;
 }
 
-/* Botón Guardar (verde) */
+/* Botón de guardar: verde */
 .guardar {
   background-color: #28a745;
 }
@@ -90,7 +98,7 @@ tbody tr:hover {
   background-color: #218838;
 }
 
-/* Botón Cancelar (rojo) */
+/* Botón de cancelar: rojo */
 .cancelar {
   background-color: #dc3545;
 }
@@ -98,19 +106,21 @@ tbody tr:hover {
   background-color: #c82333;
 }
 
-/* Efecto al hacer clic */
+/* Efecto visual al hacer clic */
 .modificar:active,
 .guardar:active,
 .cancelar:active {
   transform: scale(0.97);
 }
 
+/* Separación adicional en el formulario */
 .edit-form > div {
   margin-top: 1.5rem;
 }
 
+/* Estilo para el botón de eliminar */
 button.eliminar {
-  background-color: #dc3545; /* Rojo */
+  background-color: #dc3545;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -118,12 +128,11 @@ button.eliminar {
   margin-left: 0.5rem;
   cursor: pointer;
 }
-
 button.eliminar:hover {
-  background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+  background-color: #c82333;
 }
 
-
+/* Fondo oscuro del modal */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -137,6 +146,7 @@ button.eliminar:hover {
   z-index: 2000;
 }
 
+/* Contenido centrado del modal */
 .modal-content {
   background: white;
   padding: 2rem;

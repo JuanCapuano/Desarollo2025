@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListOrdersComponent } from './list-orders.component';
 
 describe('ListOrdersComponent', () => {
@@ -8,15 +7,16 @@ describe('ListOrdersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListOrdersComponent]
+      imports: [ListOrdersComponent] // Se importa el componente a testear
     })
-    .compileComponents();
+    .compileComponents(); // Compilación de componentes
 
     fixture = TestBed.createComponent(ListOrdersComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); // Detona el ciclo de vida de Angular
   });
 
+  // Verifica que el componente se haya creado sin errores
   it('should create', () => {
     expect(component).toBeTruthy();
   });

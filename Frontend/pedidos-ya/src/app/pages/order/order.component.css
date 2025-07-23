@@ -1,47 +1,44 @@
-/* Título */
+/* Estilo para el título principal de la página */
 h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: #dc3545;
+  color: #dc3545; /* Rojo bootstrap */
   margin-bottom: 20px;
-
 }
 
-/* Formulario */
+/* Estilos para el formulario del pedido */
 form {
-  max-width: 500px;
-  margin: 0 auto; 
-  margin-bottom: 4rem;
-  background-color: #eaebec;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  max-width: 500px; /* Ancho máximo */
+  margin: 0 auto;  /* Centrado horizontal */
+  margin-bottom: 4rem; /* Espacio abajo */
+  background-color: #eaebec; /* Fondo gris claro */
+  padding: 25px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
 }
 
-/* Inputs */
+/* Margen inferior para los inputs */
 input.form-control {
   margin-bottom: 10px;
 }
 
+/* Cambiar color borde cuando el input está enfocado */
 input.form-control:focus {
-  border-color: #007bff;
+  border-color: #007bff; /* Azul bootstrap */
 }
 
-/* Botón */
+/* Estilos para el botón enviar */
 button {
-  margin-top: px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* margin-top: px; --> parece un error sin valor, se puede corregir si se desea */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Estilos para mensajes de error */
 .alert-danger {
   margin-top: 0.75rem;
 }
 
+/* Estilos para mensajes de éxito */
 .alert-success {
   margin-top: 0.75rem;
 }
-
-
-
-
-

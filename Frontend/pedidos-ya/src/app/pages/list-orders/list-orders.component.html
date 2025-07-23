@@ -1,8 +1,11 @@
+<!-- Título principal -->
 <h2>Lista de Pedidos</h2>
 
+<!-- Tabla de pedidos -->
 <table>
   <thead>
     <tr>
+      <!-- Encabezados de columnas -->
       <th>ID</th>
       <th>Estado</th>
       <th>Usuario ID</th>
@@ -14,6 +17,7 @@
     </tr>
   </thead>
   <tbody>
+    <!-- Itera sobre las órdenes y las muestra -->
     @for (orden of ordenes; track orden.id) {
       <tr>
         <td>{{ orden.id }}</td>
@@ -32,15 +36,16 @@
   </tbody>
 </table>
 
-<!-- Mensaje de error -->
+<!-- Muestra mensaje si hay error -->
 <div *ngIf="error" class="error">
   {{ error }}
 </div>
 
-<!-- Formulario para editar una orden -->
+<!-- Formulario para editar orden seleccionada -->
 <div *ngIf="ordenEditando" class="edit-form">
   <h3>Editar Pedido ID: {{ ordenEditando.id }}</h3>
 
+  <!-- Campos para modificar el pedido -->
   <label>
     Estado:
     <input [(ngModel)]="ordenEditando.status" />
@@ -77,8 +82,7 @@
   </div>
 </div>
 
-
-<!-- Modal de Confirmación para Eliminar Orden -->
+<!-- Modal de confirmación para eliminar orden -->
 <div class="modal-backdrop" *ngIf="mostrarModalEliminarOrden">
   <div class="modal-content">
     <p>¿Estás seguro de que querés eliminar la orden con ID {{ ordenIdAEliminar }}?</p>
@@ -88,7 +92,3 @@
     </div>
   </div>
 </div>
-
-<div>
-
-

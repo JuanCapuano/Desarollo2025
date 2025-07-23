@@ -1,16 +1,20 @@
+<!-- Contenedor centrado vertical y horizontalmente con Bootstrap -->
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card shadow p-4 w-100" style="max-width: 500px;">
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-    <!-- Mensajes -->
+    <!-- Mensaje de error -->
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    
+    <!-- Mensaje de éxito -->
     <div *ngIf="success" class="alert alert-success">{{ success }}</div>
 
-    <!-- Formulario -->
+    <!-- Formulario reactivo -->
     <form [formGroup]="formulario" (ngSubmit)="login()">
       <div class="mb-3">
         <label for="email" class="form-label">Correo electrónico</label>
         <input type="email" class="form-control" id="email" formControlName="email" placeholder="usuario@ejemplo.com" />
+        <!-- Mensaje de error para el campo email -->
         <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched" class="text-danger">
           Ingresá un correo válido.
         </div>
@@ -19,19 +23,20 @@
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="password" formControlName="password" placeholder="••••••••" />
+        <!-- Mensaje de error para el campo contraseña -->
         <div *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched" class="text-danger">
           La contraseña debe tener al menos 6 caracteres.
         </div>
       </div>
 
+      <!-- Botón para enviar el formulario -->
       <button type="submit" class="btn btn-primary w-100">Ingresar</button>
     </form>
 
+    <!-- Link para registrarse si no se tiene cuenta -->
     <div class="text-center mt-3">
       ¿No tenés cuenta?
       <a [routerLink]="['/register']" class="text-decoration-none">Registrate aquí</a>
     </div>
-
   </div>
 </div>
-

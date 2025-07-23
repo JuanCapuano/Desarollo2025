@@ -1,15 +1,24 @@
+<!-- Contenedor principal con margen arriba -->
 <div class="container mt-5">
+
+  <!-- Mostrar mensaje de error si existe -->
   <div *ngIf="error" class="alert alert-danger">
     {{ error }}
   </div>
 
+  <!-- Mostrar tarjeta con datos del perfil si no hay error y perfil cargado -->
   <div *ngIf="!error && perfil" class="card">
     <div class="card-header bg-primary text-white">
       <h4>Mi Perfil</h4>
     </div>
     <div class="card-body">
+      <!-- Mostrar email -->
       <p><strong>Email:</strong> {{ perfil.email }}</p>
+
+      <!-- Mostrar rol, o texto por defecto si no tiene -->
       <p><strong>Rol:</strong> {{ perfil.role || 'Sin rol asignado' }}</p>
+
+      <!-- Mostrar permisos, o mensaje alternativo si no hay permisos -->
       <p><strong>Permisos:</strong> 
         <span *ngIf="perfil.permissionCodes?.length; else sinPermisos">
           {{ perfil.permissionCodes.join(', ') }}
@@ -19,8 +28,8 @@
     </div>
   </div>
 
+  <!-- Mostrar mensaje informativo si no hay error pero tampoco perfil -->
   <div *ngIf="!error && !perfil" class="alert alert-info">
     No se encontraron datos de perfil.
   </div>
 </div>
-
