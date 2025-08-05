@@ -23,11 +23,18 @@ export class OrderComponent {
   cuidades = CIUDADES; // Lista de ciudades para mostrar en el select
   productos = PRODUCTOS; // Lista de productos para mostrar en el select múltiple
 
+  isLoggedIn = false;
+
   constructor(
     private fb: FormBuilder,
     private orderService: OrderService, // Servicio para enviar órdenes
     private router: Router
   ) {
+    this.isLoggedIn = !!localStorage.getItem('access_token'); //true si hay token en localStorage
+    if (!this.isLoggedIn) {
+    // redirigir al login
+    setTimeout(() => this.router.navigate(['/login']), 2000);
+  } 
     // Inicialización del formulario reactivo con validaciones
     this.formulario = this.fb.group({
       restaurantId: [null, [Validators.required, Validators.min(1)]], // Selección restaurante requerida, id mínimo 1

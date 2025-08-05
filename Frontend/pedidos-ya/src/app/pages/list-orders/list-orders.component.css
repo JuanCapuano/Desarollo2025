@@ -40,7 +40,7 @@ tbody tr:hover {
   margin-top: 1rem;
 }
 
-/* 🛠️ Estilo del formulario de edición de orden */
+/*Estilo del formulario de edición de orden */
 .edit-form {
   padding: 1.5rem;
   border: 1px solid #ccc;

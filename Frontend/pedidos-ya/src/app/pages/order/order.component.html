@@ -3,6 +3,11 @@
   <!-- Título centrado y con margen abajo -->
   <h2 class="text-center mb-4">Nuevo Pedido</h2>
 
+    <!-- Mensaje si NO está logueado -->
+  <div *ngIf="!isLoggedIn" class="alert alert-danger text-center p-3 mb-4">
+    Tenés que iniciar sesión para realizar un pedido.
+  </div>
+
   <!-- Formulario reactivo Angular para crear una orden -->
   <form [formGroup]="formulario" (ngSubmit)="enviarOrden()">
 
