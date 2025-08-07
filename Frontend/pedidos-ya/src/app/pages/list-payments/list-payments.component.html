@@ -1,0 +1,31 @@
+<h2>Lista de Pagos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID Pago</th>
+      <th>Monto</th>
+      <th>Método</th>
+      <th>Estado</th>
+        <th>Fecha de Pago</th>
+        <th>Detalles de Reembolso</th>
+        <th>Fecha de Reembolso</th>
+        <th>Orden ID</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @for (pago of payments; track pago.id) {
+      <tr>
+        <td>{{ pago.id }}</td>
+        <td>{{ pago.amount }}</td>
+        <td>{{ pago.method }}</td>
+        <td>{{ pago.status }}</td>
+        <td>{{ pago.paymentTime }}</td>
+        <td>{{ pago.refunDetails }}</td>
+        <td>{{ pago.refundTime }}</td>
+        <td>{{ pago.order?.id }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+<div *ngIf="error" class="error">{{ error }}</div>

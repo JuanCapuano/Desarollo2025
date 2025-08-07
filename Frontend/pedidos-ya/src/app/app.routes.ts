@@ -6,7 +6,8 @@ import { OrderComponent } from './pages/order/order.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { ListPaymentsComponent } from './pages/list-payments/list-payments.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,10 @@ export const routes: Routes = [
       },
       { path: 'payment/:orderId',
         component:PaymentComponent
+      },
+      {
+        path: 'listPayments',
+        component: ListPaymentsComponent
       }
     ],
   },

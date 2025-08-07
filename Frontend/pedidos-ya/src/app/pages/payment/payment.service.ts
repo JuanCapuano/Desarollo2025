@@ -13,4 +13,9 @@ export class PaymentService {
     const response = await firstValueFrom(this.http.post<any>(this.apiUrl, paymentData));
     return response;
   }
+
+  async getPayments() {
+    const response = await firstValueFrom(this.http.get<any>(this.apiUrl));
+    return response.items;
+  }
 }
