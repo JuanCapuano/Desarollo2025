@@ -21,7 +21,7 @@ import { PermissionsController } from './permissions/permissions.controller';
       host: 'localhost',
       port: 5436,
       username: 'postgres',      
-      password: 'postgres',   
+      password: 'mipassword',   
       database: 'jwt_db',         
       entities,
       synchronize: true,         

@@ -47,7 +47,11 @@ export class PaymentService {
 
 //findAll para obtener todos los pagos con paginación
   async findAll(options: IPaginationOptions): Promise<Pagination<Payment>> {
-    return paginate<Payment>(this.paymentRepository, options)
+    return paginate<Payment>(
+      this.paymentRepository,
+      options,
+      { relations: ['order'] } // Esto incluye la orden asociada en cada pago
+    );
   }
 //findOne para obtener un pago específico por su ID
   async findOne(id: number): Promise<Payment | null> {
